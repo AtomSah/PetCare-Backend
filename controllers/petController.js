@@ -58,7 +58,7 @@ const createPet = async (req, res) => {
       price,
       description,
       vaccinated: vaccinated === 'true',
-      image: imagePath,
+      image: req.file.filename,
       available: true
     });
 

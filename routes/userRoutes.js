@@ -15,8 +15,8 @@ const { isAdmin } = require('../middlewares/adminMiddleware');
 const router = express.Router();
 
 // Public routes
-router.post('/register', registerUser);
-router.post('/login', loginUser);
+router.post('/sign-up', registerUser);
+router.post('/sign-in', loginUser);
 router.post('/forgot-password', forgotPassword);
 router.post('/reset-password/:token', resetPassword);
 

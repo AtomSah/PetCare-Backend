@@ -16,7 +16,7 @@ const getAllBookings = async (req, res) => {
     
     const bookings = await Booking.find()
       .populate('pet')
-      .populate('user', 'fullname email phone')
+      .populate('user', 'name email phone')
       .sort('-createdAt');
     
     res.status(200).json(bookings);

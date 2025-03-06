@@ -19,7 +19,7 @@ app.use(cors());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Routes
-app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/user', require('./routes/userRoutes'));
 app.use('/api/pets', require('./routes/petRoutes'));
 app.use('/api/bookings', bookingRoutes);
 

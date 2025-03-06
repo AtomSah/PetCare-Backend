@@ -6,7 +6,7 @@ const crypto = require('crypto');
 // Register a new user
 const registerUser = async (req, res) => {
   try {
-    const { fullname, email, password, phone } = req.body;
+    const { name, email, password, phone } = req.body;
 
     // Check if user already exists
     const userExists = await User.findOne({ email });
@@ -16,7 +16,7 @@ const registerUser = async (req, res) => {
 
     // Create new user
     const user = await User.create({
-      fullname,
+      name,
       email,
       password,
       phone,
@@ -32,7 +32,7 @@ const registerUser = async (req, res) => {
       message: 'User registered successfully',
       user: {
         _id: user._id,
-        fullname: user.fullname,
+        name: user.name,
         email: user.email,
         phone: user.phone,
         role: user.role
@@ -70,7 +70,7 @@ const loginUser = async (req, res) => {
       message: 'Login successful',
       user: {
         _id: user._id,
-        fullname: user.fullname,
+        name: user.name,
         email: user.email,
         phone: user.phone,
         role: user.role,
@@ -202,7 +202,7 @@ const updateUser = async (req, res) => {
     }
     
     const { id } = req.params;
-    const { fullname, email, phone, role } = req.body;
+    const { name, email, phone, role } = req.body;
     
     // Check if email is already taken by another user
     if (email) {
@@ -214,7 +214,7 @@ const updateUser = async (req, res) => {
     
     const user = await User.findByIdAndUpdate(
       id,
-      { fullname, email, phone, role },
+      { name, email, phone, role },
       { new: true }
     ).select('-password');
     
